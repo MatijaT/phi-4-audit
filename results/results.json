@@ -1,0 +1,186 @@
+{
+ "1": {
+  "stage": "1 baseline",
+  "description": "all 299 graphs, 24 features, random folds",
+  "n": 299,
+  "positives": 122,
+  "gbt": {
+   "mean": 0.908,
+   "std": 0.008,
+   "folds_unscorable": 0,
+   "folds_total": 100
+  },
+  "logistic": {
+   "mean": 0.878,
+   "std": 0.006,
+   "folds_unscorable": 0,
+   "folds_total": 100
+  },
+  "shuffled_labels": {
+   "gbt": 0.508,
+   "logistic": 0.505
+  },
+  "importance_top5": [
+   [
+    "vertex_conn",
+    0.146
+   ],
+   [
+    "aut",
+    0.079
+   ],
+   [
+    "ntrees",
+    0.064
+   ],
+   [
+    "ev2",
+    0.047
+   ],
+   [
+    "double_tri",
+    0.011
+   ]
+  ]
+ },
+ "vertex_conn_x_label": {
+  "vertex_conn=3": {
+   "c2!=0": 0,
+   "c2=0": 50
+  },
+  "vertex_conn=4": {
+   "c2!=0": 177,
+   "c2=0": 72
+  }
+ },
+ "2a": {
+  "stage": "2a no products",
+  "description": "vertex_conn = 4 only (the 50 products removed)",
+  "n": 249,
+  "positives": 72,
+  "gbt": {
+   "mean": 0.846,
+   "std": 0.014,
+   "folds_unscorable": 0,
+   "folds_total": 100
+  },
+  "logistic": {
+   "mean": 0.785,
+   "std": 0.01,
+   "folds_unscorable": 0,
+   "folds_total": 100
+  },
+  "shuffled_labels": {
+   "gbt": 0.48,
+   "logistic": 0.495
+  }
+ },
+ "2b": {
+  "stage": "2b no connectivity",
+  "description": "all 299, vertex_conn and edge_conn dropped",
+  "n": 299,
+  "positives": 122,
+  "gbt": {
+   "mean": 0.852,
+   "std": 0.011,
+   "folds_unscorable": 0,
+   "folds_total": 100
+  },
+  "logistic": {
+   "mean": 0.863,
+   "std": 0.009,
+   "folds_unscorable": 0,
+   "folds_total": 100
+  },
+  "shuffled_labels": {
+   "gbt": 0.505,
+   "logistic": 0.507
+  }
+ },
+ "3": {
+  "stage": "3 prime ancestors",
+  "description": "graphs whose ancestor is a single non-K5 graph",
+  "n": 117,
+  "positives": 15,
+  "gbt": {
+   "mean": 0.703,
+   "std": 0.028,
+   "folds_unscorable": 0,
+   "folds_total": 100
+  },
+  "logistic": {
+   "mean": 0.845,
+   "std": 0.02,
+   "folds_unscorable": 0,
+   "folds_total": 100
+  },
+  "shuffled_labels": {
+   "gbt": 0.52,
+   "logistic": 0.502
+  }
+ },
+ "4": {
+  "stage": "4 families held out",
+  "description": "prime ancestors, grouped by ancestor family",
+  "n": 117,
+  "positives": 15,
+  "gbt": {
+   "mean": 0.487,
+   "std": 0.091,
+   "folds_unscorable": 41,
+   "folds_total": 100
+  },
+  "logistic": {
+   "mean": 0.723,
+   "std": 0.102,
+   "folds_unscorable": 41,
+   "folds_total": 100
+  },
+  "shuffled_labels": {
+   "gbt": 0.487,
+   "logistic": 0.493
+  },
+  "positive_families": 4,
+  "families": 52
+ },
+ "5": {
+  "stage": "5 all families to L=10",
+  "description": "all irreducible forms L=6..10 (each its own family)",
+  "n": 283,
+  "positives": 7,
+  "gbt": {
+   "mean": 0.96,
+   "std": 0.011,
+   "folds_unscorable": 0,
+   "folds_total": 100
+  },
+  "logistic": {
+   "mean": 0.963,
+   "std": 0.011,
+   "folds_unscorable": 0,
+   "folds_total": 100
+  },
+  "shuffled_labels": {
+   "gbt": 0.479,
+   "logistic": 0.512
+  },
+  "medians_c2zero_vs_rest": {
+   "aut": [
+    48.0,
+    2.0
+   ],
+   "triangles": [
+    4.0,
+    3.0
+   ],
+   "girth": [
+    3.0,
+    3.0
+   ],
+   "n_distinct_ev": [
+    6.0,
+    11.0
+   ]
+  }
+ }
+}
