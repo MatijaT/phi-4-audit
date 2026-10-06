@@ -1,6 +1,6 @@
 # Predicting c₂ = 0 for φ⁴ graphs, and auditing the prediction
 
-Is the vanishing of the c₂ invariant of a primitive φ⁴ Feynman graph (conjecturally
+Inspired by Davies et al. (Nature, 2021), we ask: is the vanishing of the c₂ invariant of a primitive φ⁴ Feynman graph (conjecturally
 equivalent to a drop in the weight of its period) predictable from elementary graph
 invariants? On the complete catalogue of 299 graphs through 9 loops, a classifier on 24
 invariants reaches cross-validated ROC AUC **0.91**, with vertex connectivity ranked
@@ -98,6 +98,7 @@ phi4audit/c2_bruteforce.py  c2 by point counting (independent label check)
 scripts/build_data.py       → data/built/*.csv
 scripts/run_audits.py       → results/, figures/
 tests/                      census counts, theorem checks, confluence, brute-force c2
+slides/                     EEML 2026 talk (the study is in Strand I)
 ```
 
 ## Background
@@ -120,5 +121,5 @@ conjectured that the weight drops exactly when c₂ = 0.
 - A. Davies et al., *Advancing mathematics by guiding human intuition with AI*,
   Nature 600 (2021).
 
-Part of the invited talk *ML for Mathematics*, EEML 2026 ([slides](LINK)). Code and README written
+Part of the invited talk *ML for Mathematics*, EEML 2026 ([slides](slides/EEML2026_ML_for_Mathematics_Tapuskovic.pdf)). Code and README written
 with AI assistance; the mathematics, the audit design and every result were checked by the author.
