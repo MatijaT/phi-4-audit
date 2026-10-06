@@ -1,18 +1,17 @@
-# Auditing an attribution result against known mathematics
+# Predicting c₂ = 0 for φ⁴ graphs, and auditing the prediction
 
-A classifier predicts, from 24 elementary graph invariants, whether a primitive φ⁴
-Feynman graph has vanishing c₂ invariant (conjecturally, the signature of a drop in the
-weight of its Feynman period). On the complete catalogue of 299 graphs through 9 loops it
-reaches cross-validated ROC AUC **0.91**, and permutation importance ranks vertex
-connectivity first.
+Is the vanishing of the c₂ invariant of a primitive φ⁴ Feynman graph (conjecturally
+equivalent to a drop in the weight of its period) predictable from elementary graph
+invariants? On the complete catalogue of 299 graphs through 9 loops, a classifier on 24
+invariants reaches cross-validated ROC AUC **0.91**, with vertex connectivity ranked
+first by permutation importance.
 
-Unlike most ML benchmarks, here part of the ground truth is known: some of the
-mechanisms producing c₂ = 0 are theorems. That makes the score and its explanation
-checkable. Checking them shows the score was built mostly from known mathematics:
+Part of this signal is explained by known theorems and by the structure of the dataset.
+Each stage below removes one such source and re-measures:
 
 1. **The top feature restates a theorem.** Every graph with a 3-vertex cut is a
    *product*, and products have c₂ = 0. All 50 such graphs are positive. Removing the
-   connectivity features: 0.85–0.86.
+   connectivity features reduces AUC to 0.85 - 0.86.
 2. **Products also hide.** Of the remaining 72 positives, 57 reduce to a product after
    double-triangle reductions, which preserve c₂. Restricting to graphs whose reduced
    form (*ancestor*) is a single irreducible graph: 117 graphs, 15 positive. A linear
@@ -23,19 +22,9 @@ checkable. Checking them shows the score was built mostly from known mathematics
 
 ![AUC by stage](figures/auc_staircase.png)
 
-What survives is a weak cross-family signal measured on four positive families. The
-ceiling is the mathematics: through 10 loops there are 283 irreducible families,
-and exactly **7** have c₂ = 0 (stage 5 below).
-
-## Why this is relevant to AI safety
-
-<!-- DRAFT: rewrite in your own words -->
-Interpretability and auditing produce explanations of model behaviour that are hard to
-verify, because the true mechanism is usually unknown. Mathematics supplies settings
-where it is known, at least in part. Here, a high score with a clean attribution was
-correct but uninformative: the model had found the most prominent *known* mechanism,
-and the evaluation rewarded recognising near-duplicates. Both failure modes are
-generic, and neither is visible without ground truth to audit against.
+What remains is a weak cross-family signal, measured on four positive families. Through
+10 loops there are 283 irreducible families, and 7 of them have c₂ = 0 (stage 5 below),
+which limits how far this can be pushed with more data at these loop orders.
 
 ## Results
 
@@ -131,7 +120,5 @@ conjectured that the weight drops exactly when c₂ = 0.
 - A. Davies et al., *Advancing mathematics by guiding human intuition with AI*,
   Nature 600 (2021).
 
-<!-- DRAFT: say how AI assistance was used, in your own words -->
-Part of the invited talk *ML for Mathematics*, EEML 2026 ([slides](LINK)). Code written
-with AI assistance; the mathematics, the audit design and every result were checked by
-the author.
+Part of the invited talk *ML for Mathematics*, EEML 2026 ([slides](LINK)). Code and README written
+with AI assistance; the mathematics, the audit design and every result were checked by the author.
